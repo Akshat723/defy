@@ -21,20 +21,20 @@ contract ChildContract {
         owner = msg.sender;
     }
 
-    function requestGasFunds(uint256 amount) external onlyOwner {
-        require(amount > 0, "Amount must be greater than 0");
-        MasterContract(masterContract).approveGasFunds(address(this), amount);
-        emit GasFundsRequested(amount);
-    }
+    // function requestGasFunds(uint256 amount) external onlyOwner {
+    //     require(amount > 0, "Amount must be greater than 0");
+    //     MasterContract(masterContract).approveGasFunds(address(this), amount);
+    //     emit GasFundsRequested(amount);
+    // }
 
-    function transferTo(address recipient, uint256 amount) external onlyOwner {
-        require(amount > 0, "Amount must be greater than 0");
-        require(MasterContract(masterContract).balances(address(this)) >= amount, "Insufficient funds in ChildContract");
+    // function transferTo(address recipient, uint256 amount) external onlyOwner {
+    //     require(amount > 0, "Amount must be greater than 0");
+    //     require(MasterContract(masterContract).balances(address(this)) >= amount, "Insufficient funds in ChildContract");
 
-        MasterContract(masterContract).balances(address(this)) -= amount;
+    //     MasterContract(masterContract).balances(address(this)) -= amount;
 
-        // Emulating the transfer logic for demonstration purposes.
-        // In reality, you would integrate with a cross-chain solution or bridge.
-        emit TransferCompleted(recipient, amount);
-    }
+    //     // Emulating the transfer logic for demonstration purposes.
+    //     // In reality, you would integrate with a cross-chain solution or bridge.
+    //     emit TransferCompleted(recipient, amount);
+    // }
 }
